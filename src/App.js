@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useState, useRef } from 'react';
 
-const adaUrl = 'https://api.dev.alldataapp.com';
-const bearerToken = 'Bearer eyJraWQiOiJaYmJJZXZIQ3F4RmdhV0Rva2RVQ1ZUTUhcL1N3U1dMaHlpR0hwdnJzVGdiMD0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJlMzIwYzZjNy01YjhiLTQxZmQtYmIxOC0yODFlMTJhNmVlZTUiLCJjb2duaXRvOmdyb3VwcyI6WyJhZG1pbi1ldSIsImFkbWluLW5hIiwiY3JlYXRvci1uYSJdLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0yLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMl95ZzdxenpLelQiLCJjbGllbnRfaWQiOiIzZjZwbDhvdXQ3a2ZqZGdxMWhuYjEzMmtsNiIsImV2ZW50X2lkIjoiMGM3NzlmNTgtYWQ2NS00MDJmLWEzMTUtNGJhZGU4ZTUyYmE3IiwidG9rZW5fdXNlIjoiYWNjZXNzIiwic2NvcGUiOiJhd3MuY29nbml0by5zaWduaW4udXNlci5hZG1pbiIsImF1dGhfdGltZSI6MTY1NDYxNDQ2NywiZXhwIjoxNjU0NzAwODY3LCJpYXQiOjE2NTQ2MTQ0NjcsImp0aSI6IjVmMGU2MzI1LWRmYTQtNDljOS04ZTA1LWQzNWU5YTAzYTNmNCIsInVzZXJuYW1lIjoiYW5uYS5jYXJ2YWxob0BzdGVsbGFudGlzLmNvbSJ9.MBZ_lAZR9tmjxTVhJDStkLfUEwgkLwwZ6Oq3nS3yDMN1AtXVJUCi7jlKplVHGfl-ryB6EqcMjd3qahBglQdufavvWw-ekrQMxNLkE-uSZLHLLmc3hI7LyMyCqKV1CHxo_p9K1Uzw0x85--9Oj6yWX79ChEdg7n9P2QA-IiNWidxfGSmOYor0rfaXX60QcXuPtDL0-4wAw8q5COz_HMlFklfH857ItegfnI0l7s_BF9-druSlpSxr-G70m9mfTNrRYy8s1b-NWXc0IYtejmPcMqT7KrIbXqGKjq4p9fJNHC2E92UVL3tSiOJDqBkwwVM7ZzL222QDDig6naHlfPKr2A';
+const bearerToken = 'Bearer eyJraWQiOiJaYmJJZXZIQ3F4RmdhV0Rva2RVQ1ZUTUhcL1N3U1dMaHlpR0hwdnJzVGdiMD0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI4N2VmMjExNi02MTg1LTQwMmYtODQ4OC0yMzhkOTViOWE1ODciLCJjb2duaXRvOmdyb3VwcyI6WyJ1cy1lYXN0LTJfeWc3cXp6S3pUX0dvb2dsZSIsImFkbWluLW5hIiwiY3JlYXRvci1uYSJdLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0yLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMl95ZzdxenpLelQiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiIzZjZwbDhvdXQ3a2ZqZGdxMWhuYjEzMmtsNiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4gb3BlbmlkIHByb2ZpbGUgZW1haWwiLCJhdXRoX3RpbWUiOjE2NTQ3MDY0MTcsImV4cCI6MTY1NDc5MjgxNywiaWF0IjoxNjU0NzA2NDE3LCJqdGkiOiI5ODkxMDQwNC1jNDRiLTQ3ZTEtOGE5OC0yMjk4OTRhMTY0NGUiLCJ1c2VybmFtZSI6Ikdvb2dsZV8xMDU2NzA5MTU2Mzg3NjAzNDMwNDcifQ.SgHin3vNvM7Ck9-sB00Slb9xD4adOE1UtqCDbIRdT6PIhQlDmuorXhJCY9xplleFAyif8bNqK9Y1Uu3qGdFnRy5GrJdliOrT7eguAQKxPaFv9PfTED5IcmVdWUwvdvWr6mIM0QnjywTER0CeSNvpZ2uykYSA-pyTVk9MdTtJIuM7gkj_6yJG5vWBJxV_c8Lcw-kZ9j1d9QsGI1mkJMAXr5L21iyCX4vj8K_S3h5g1bZWeo-MZ3Geqw7J9PpruLTaHMuuyxE5rRvWRbGTItqTyaQuVDiAej82dImIuYIa-GIAJKtr0btEA86Uaj1y_MF0v-HVEBLhxpEe3XgmyBsB5A';
 const vin = '1C4SDJET7KC500079';
 
+const adaUrl = 'https://api.dev.alldataapp.com';
 const vinDetails = `/v1/vin/${vin}`;
 const lastKnown = `/v1/vin/${vin}/data/lastknown`;
+
+let screenshot = '../screenshot.bmp'
 
 export default function App() {
   return (
@@ -16,6 +18,7 @@ export default function App() {
         <option value="lastKnown">last known</option>
       </select>
       <button onClick={handleSubmit}>Submit</button>
+      <img src={screenshot}/>
     </>
   )
 }
@@ -28,12 +31,10 @@ function handleSubmit() {
   const selection = document.getElementById('selection').value;
 
   let endpoint;
-  if (selection === 'vinDetails') {
+  if (selection === 'vinDetails')
     endpoint = `${vinDetails}`;
-  }
-  else if (selection === 'lastKnown') {
+  else if (selection === 'lastKnown')
     endpoint = `${lastKnown}`;
-  }
 
   const urlToFetch = `${adaUrl}${endpoint}`
 
@@ -46,7 +47,8 @@ function handleSubmit() {
   }
 
   // fetch data every second 
-  let interval = setInterval(() => getData(req), 5000)
+  //let interval = setInterval(() => getData(req), 5000)
+  let interval = setInterval(() => setImage(), 1000)
 }
 
 /**
@@ -61,4 +63,14 @@ function getData(req) {
   }, error => {
     console.log(error)
   })
+}
+
+function setImage() {
+  if (screenshot === '../screenshot.bmp') {
+    screenshot = '../screenshot2.bmp';
+    console.log("first");
+  } else {
+    screenshot = '../screenshot.bmp';
+    console.log("second");
+  }
 }
