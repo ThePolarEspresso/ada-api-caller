@@ -8,7 +8,9 @@ A Simple application that runs on your browser which retrieves data from the ADA
 2. Within the project directory, execute 'npm start' in the terminal.
 
 ## Things to do
-- Prompt the user at startup to enter their bearer token and save it (so bearer token doesn't need to be hard-coded)
+- Get the 'forever' bearer token from Austin (or was it Jonathan?) so that we don't have to enter a new 
+bearer token every day.
+- Upload an image to the webpage and have it change every few seconds.
 - Prompt the user at startup to enter a vehicle's vin, so that doesn't need to be hard-coded (right now it's just a default test vin)
 - Make it so the old data get's erased when you submit a new request
 - Make the displayed data easier to read and/or filter the results** (Andrew said this would be tricky)
