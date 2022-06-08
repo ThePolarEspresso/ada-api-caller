@@ -20,6 +20,10 @@ export default function App() {
   )
 }
 
+/**
+ * Function that determines the data to be fetched when the user hits
+ * submit; prints the data to the webpage
+ */
 function handleSubmit() {
   const selection = document.getElementById('selection').value;
 
@@ -41,9 +45,15 @@ function handleSubmit() {
     }
   }
 
-  getData(req)
+  // fetch data every second 
+  let interval = setInterval(() => getData(req), 5000)
 }
 
+/**
+ * Function that performs a get call to retrieve the desired data
+ * 
+ * @param {*} req 
+ */
 function getData(req) {
   axios(req)
   .then(res => {
