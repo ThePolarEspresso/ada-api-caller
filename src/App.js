@@ -1,40 +1,28 @@
 import axios from 'axios';
 import React, { useState, useRef } from 'react';
 
-const bearerToken = 'Bearer eyJraWQiOiJaYmJJZXZIQ3F4RmdhV0Rva2RVQ1ZUTUhcL1N3U1dMaHlpR0hwdnJzVGdiMD0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI4N2VmMjExNi02MTg1LTQwMmYtODQ4OC0yMzhkOTViOWE1ODciLCJjb2duaXRvOmdyb3VwcyI6WyJ1cy1lYXN0LTJfeWc3cXp6S3pUX0dvb2dsZSIsImFkbWluLW5hIiwiY3JlYXRvci1uYSJdLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0yLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMl95ZzdxenpLelQiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiIzZjZwbDhvdXQ3a2ZqZGdxMWhuYjEzMmtsNiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4gb3BlbmlkIHByb2ZpbGUgZW1haWwiLCJhdXRoX3RpbWUiOjE2NTQ3MDY0MTcsImV4cCI6MTY1NDc5MjgxNywiaWF0IjoxNjU0NzA2NDE3LCJqdGkiOiI5ODkxMDQwNC1jNDRiLTQ3ZTEtOGE5OC0yMjk4OTRhMTY0NGUiLCJ1c2VybmFtZSI6Ikdvb2dsZV8xMDU2NzA5MTU2Mzg3NjAzNDMwNDcifQ.SgHin3vNvM7Ck9-sB00Slb9xD4adOE1UtqCDbIRdT6PIhQlDmuorXhJCY9xplleFAyif8bNqK9Y1Uu3qGdFnRy5GrJdliOrT7eguAQKxPaFv9PfTED5IcmVdWUwvdvWr6mIM0QnjywTER0CeSNvpZ2uykYSA-pyTVk9MdTtJIuM7gkj_6yJG5vWBJxV_c8Lcw-kZ9j1d9QsGI1mkJMAXr5L21iyCX4vj8K_S3h5g1bZWeo-MZ3Geqw7J9PpruLTaHMuuyxE5rRvWRbGTItqTyaQuVDiAej82dImIuYIa-GIAJKtr0btEA86Uaj1y_MF0v-HVEBLhxpEe3XgmyBsB5A';
-const vin = '1C4SDJET7KC500079';
-
-const adaUrl = 'https://api.dev.alldataapp.com';
-const vinDetails = `/v1/vin/${vin}`;
-const lastKnown = `/v1/vin/${vin}/data/lastknown`;
-
-let screenshot = '../screenshot.bmp'
+const bearerToken = 'Bearer eyJraWQiOiJaYmJJZXZIQ3F4RmdhV0Rva2RVQ1ZUTUhcL1N3U1dMaHlpR0hwdnJzVGdiMD0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxMWMxNDVhYi03ZTVhLTQwMGYtYjg5Ny05MmIzMWMyMGM5MDAiLCJjb2duaXRvOmdyb3VwcyI6WyJ1cy1lYXN0LTJfeWc3cXp6S3pUX0dvb2dsZSIsImFkbWluLWV1IiwiYWRtaW4tbmEiXSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfeWc3cXp6S3pUIiwidmVyc2lvbiI6MiwiY2xpZW50X2lkIjoiM2Y2cGw4b3V0N2tmamRncTFobmIxMzJrbDYiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIG9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXV0aF90aW1lIjoxNjU0Nzg0MTE1LCJleHAiOjE2NTQ4NzA1MTUsImlhdCI6MTY1NDc4NDExNSwianRpIjoiYTcyZTU1N2MtZGJhZi00MmJhLTgxZjYtN2Y2ZjhkNjIzOTY0IiwidXNlcm5hbWUiOiJHb29nbGVfMTA0OTQyMTc3ODMzOTU1NzAyMjg4In0.FiwcfJ8gkL6qcpi-eUxU2kSBHEuB-xJkG2050oyFM3kZaowqNJcAm9KKlB_ANxeArDPX0OnowcLQ3JC64nu3MjxZjgeaCPmuSBEgipWIvjCk8aXmGQv1Cz3QZAsLdK49fKsNsPAzB4JsIvEt8lYGv5xxYXuqefPnfh6yjWdAzRi04ZzdEApxyannGQVUvBoT1VsYfWlv9tr_h3kpBVJ1wyBrPcDUwAFgS4hPuNy26vj4YKBMUM5MNpfLmm0xW8QQ3RRJrOV6VWtUhEzUXlcasJkkhBq_naduKz234fwM2p4iQ_B58z168svbkuF_AFdEBoB6FLvVGN7Ayl4gclqdbA';
 
 export default function App() {
-  return (
-    <>
-      <select id="selection">
-        <option value="vinDetails">vin details</option>
-        <option value="lastKnown">last known</option>
-      </select>
-      <button onClick={handleSubmit}>Submit</button>
-      <img src={screenshot}/>
-    </>
-  )
-}
+  const vin = '1C4SDJET7KC500079';
+  const adaUrl = 'https://api.dev.alldataapp.com';
+  let screenshot = '../screenshot.bmp'
+  const vinRef = useRef();
 
-/**
+  /**
  * Function that determines the data to be fetched when the user hits
  * submit; prints the data to the webpage
  */
 function handleSubmit() {
   const selection = document.getElementById('selection').value;
-
+  const vin = vinRef.current.value;
   let endpoint;
+
+
   if (selection === 'vinDetails')
-    endpoint = `${vinDetails}`;
+    endpoint = `/v1/vin/${vin}`;
   else if (selection === 'lastKnown')
-    endpoint = `${lastKnown}`;
+    endpoint = `/v1/vin/${vin}/data/lastknown`;
 
   const urlToFetch = `${adaUrl}${endpoint}`
 
@@ -46,9 +34,10 @@ function handleSubmit() {
     }
   }
 
+  getData(req);
   // fetch data every second 
   //let interval = setInterval(() => getData(req), 5000)
-  let interval = setInterval(() => setImage(), 1000)
+  //let interval = setInterval(() => setImage(), 1000)
 }
 
 /**
@@ -74,3 +63,18 @@ function setImage() {
     console.log("second");
   }
 }
+
+  return (
+    <>
+      <input ref={ vinRef } type="text" placeholder="Enter VIN here" />
+      <br></br>
+      <select id="selection">
+        <option value="vinDetails">VIN Details</option>
+        <option value="lastKnown">Last Known Data</option>
+      </select>
+      <button onClick={ handleSubmit }>Submit</button>
+      <img src={ screenshot }/>
+    </>
+  )
+}
+
