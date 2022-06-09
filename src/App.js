@@ -3,7 +3,8 @@ import React, { useState, useRef } from 'react';
 
 export default function App() {
   const bearerToken = 'Bearer eyJraWQiOiJaYmJJZXZIQ3F4RmdhV0Rva2RVQ1ZUTUhcL1N3U1dMaHlpR0hwdnJzVGdiMD0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxMWMxNDVhYi03ZTVhLTQwMGYtYjg5Ny05MmIzMWMyMGM5MDAiLCJjb2duaXRvOmdyb3VwcyI6WyJ1cy1lYXN0LTJfeWc3cXp6S3pUX0dvb2dsZSIsImFkbWluLWV1IiwiYWRtaW4tbmEiXSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfeWc3cXp6S3pUIiwidmVyc2lvbiI6MiwiY2xpZW50X2lkIjoiM2Y2cGw4b3V0N2tmamRncTFobmIxMzJrbDYiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIG9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXV0aF90aW1lIjoxNjU0Nzg0MTE1LCJleHAiOjE2NTQ4NzA1MTUsImlhdCI6MTY1NDc4NDExNSwianRpIjoiYTcyZTU1N2MtZGJhZi00MmJhLTgxZjYtN2Y2ZjhkNjIzOTY0IiwidXNlcm5hbWUiOiJHb29nbGVfMTA0OTQyMTc3ODMzOTU1NzAyMjg4In0.FiwcfJ8gkL6qcpi-eUxU2kSBHEuB-xJkG2050oyFM3kZaowqNJcAm9KKlB_ANxeArDPX0OnowcLQ3JC64nu3MjxZjgeaCPmuSBEgipWIvjCk8aXmGQv1Cz3QZAsLdK49fKsNsPAzB4JsIvEt8lYGv5xxYXuqefPnfh6yjWdAzRi04ZzdEApxyannGQVUvBoT1VsYfWlv9tr_h3kpBVJ1wyBrPcDUwAFgS4hPuNy26vj4YKBMUM5MNpfLmm0xW8QQ3RRJrOV6VWtUhEzUXlcasJkkhBq_naduKz234fwM2p4iQ_B58z168svbkuF_AFdEBoB6FLvVGN7Ayl4gclqdbA';
-  let vin = '1C4SDJET7KC500079';
+
+  let vin = '1C4SDJET7KC500079'; // default vin in case user doesn't enter one
   const adaUrl = 'https://api.dev.alldataapp.com';
   let screenshot = '../screenshot.bmp'
   const vinRef = useRef();
@@ -48,7 +49,6 @@ export default function App() {
   function getData(req) {
     axios(req)
     .then(res => {
-      console.log(res.data);
       setResults(JSON.stringify(res.data));
     }, error => {
       setResults("Error, data not retrieved.");
