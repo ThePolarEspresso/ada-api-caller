@@ -54,15 +54,7 @@ export default function App() {
       setResults("Error, data not retrieved.");
       console.log(error);
     })
-  }
-
-  function UpdateResults() {
-    return (
-      <div>
-        {results}
-      </div>
-    )
-  }
+  } 
 
   // function setImage() {
   //   if (screenshot === '../screenshot.bmp') {
@@ -78,6 +70,7 @@ export default function App() {
     const vinEntry = vinRef.current.value;
     if (vinEntry === '') return;
     vin = vinEntry;
+    vinRef.current.value = null;
   }
 
   return (
@@ -98,7 +91,7 @@ export default function App() {
       <br></br><br></br>
       <img src={ screenshot } alt="HU screenshot"/>
       <br></br><br></br>
-      <UpdateResults />
+      <div> { results } </div>
     </>
   )
 }

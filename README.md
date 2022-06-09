@@ -10,9 +10,10 @@ A Simple application that runs on your browser which retrieves data from the ADA
 ## Things to do
 - Get the 'forever' bearer token from Austin (or was it Jonathan?) so that we don't have to enter a new bearer token every day.
 - Upload an image to the webpage and have it change every few seconds.
-- Prompt the user at startup to enter a vehicle's vin so that it doesn't need to be hard-coded (right now it's just a default test vin)
-- Make it so the old data get's erased when you submit a new request
 - Make the displayed data easier to read and/or filter the results** (Andrew said this would be tricky)
 - Add more request options
 - Make it look cooler (style it)
 - ?? anything!
+
+## Current Issues
+- The 'submit vin' feature works, but it's finnicky. Should add validation, and notify the user if there's an error with data coming back.
